@@ -18,7 +18,6 @@ var LocationsListModel = function() {
     location: {lat: 40.8701, lng: -124.0866}}
   ];
 
-  // self.filteredLandmarks = ko.observableArray(self.landmarks);
 
   self.filterString = ko.observable("");
 
@@ -27,6 +26,12 @@ var LocationsListModel = function() {
       return item.name.toLowerCase().includes(self.filterString().toLowerCase());
     });
   });
-}
 
-ko.applyBindings(new LocationsListModel())
+  self.filteredLandmarks.subscribe(function(filteredList) {
+    deleteMarkers();
+    for (i = 0; i < filteredList.length; i++) {
+      addMarker(filteredList[i].location);
+    }
+    setMapOnAll(map);
+  });
+}
