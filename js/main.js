@@ -5,11 +5,11 @@ function initMap() {
     center: {lat: 40.8665, lng: -124.0828},
     zoom: 14
   });
-  for (key in sights) {
-    var marker = new google.maps.Marker({
-      position: sights[key],
-      map: map
-    });
-  }
+  // for (key in listModel) {
+  //   var marker = new google.maps.Marker({
+  //     position: sights[key],
+  //     map: map
+  //   });
+  // }
 
 }

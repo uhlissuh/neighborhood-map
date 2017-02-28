@@ -3,14 +3,34 @@
 <head>
   <title> Neighborhood Map</title>
   <meta name="viewport" content="initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-  <div id="map">
+  <div class="navbar navbar-default">
+    <span class="navbar-brand">Arcata Neighborhood Map</span>
   </div>
-
-  <script src="./js/model.js"></script>
-  <script src="./js/main.js"></script>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" id="list">
+        <div class="input-group">
+          <span class="input-group-addon"><span class=" glyphicon glyphicon-filter"></span></span>
+          <input type="text" class="form-control" placeholder="Search for..."  data-bind='textInput: filterString'>
+        </div>
+        <ul class="list-group" data-bind="foreach: filteredLandmarks">
+          <li class="list-group-item" data-bind="text: name"></li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <div id="map">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="js/view-model.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/main.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbmP6OcmDdGnY9QVIYfQWWzbwWIowW_E0&callback=initMap" async defer></script>
 </body>
 </html>
