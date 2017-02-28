@@ -9,6 +9,8 @@ function initMap() {
   });
 }
 
+
+
 // creates a marker and adds to list
 function addMarker(location) {
   var marker = new google.maps.Marker({
@@ -16,6 +18,14 @@ function addMarker(location) {
     map: map
   });
   markerList.push(marker);
+
+  var infowindow = new google.maps.InfoWindow({
+    content: "HIIIII"
+  });
+
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
 }
 
 // Sets the map on all markers in the array.
