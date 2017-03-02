@@ -5,14 +5,14 @@ function initMap() {
   console.log("init mappppp");
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.8665, lng: -124.0828},
-    zoom: 14
+    zoom: 13
   });
 }
 
 
 
 // creates a marker and adds to list
-function addMarker(location) {
+function addMarker(location, name) {
   var marker = new google.maps.Marker({
     position: location,
     map: map
@@ -20,11 +20,26 @@ function addMarker(location) {
   markerList.push(marker);
 
   var infowindow = new google.maps.InfoWindow({
-    content: "HIIIII"
   });
+
 
   marker.addListener('click', function() {
     infowindow.open(map, marker);
+    var landmarkTitle = encodeURIComponent(name);
+    var wikiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&origin=*&titles=" + landmarkTitle;
+    $.ajax({
+      url: wikiUrl,
+      dataType: "jsonp",
+      success: function(data) {
+        var pages = data.query.pages;
+        for (var key in pages) {
+            var extract = pages[key].extract
+            var title = pages[key].title
+        }
+        var formattedExtract = "<div id=infoWindow><h4>" + title + "</h4><p><em>from Wikipedia</em></p>" + extract + "</div>"
+        infowindow.setContent(formattedExtract)
+      }
+    });
   });
 }
 

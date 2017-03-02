@@ -1,3 +1,8 @@
-  #map {
-    height: 700px;
-  }
+#map {
+  height: 700px;
+}
+
+#infoWindow {
+  width: 300px;
+  height: 120px;
+}
