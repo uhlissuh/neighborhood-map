@@ -44,4 +44,34 @@ var LocationsListModel = function() {
     }
     setMapOnAll(map);
   });
+
+  self.openInfoWindow = function(data) {
+    var marker;
+    for (i = 0; i <markerList.length; i++) {
+      if (markerList[i].getPosition().lat() === data.location.lat) {
+        marker = markerList[i];
+      }
+    }
+    
+    var infowindow = new google.maps.InfoWindow({
+    });
+
+    infowindow.open(map, marker);
+    name = data.name;
+    var landmarkTitle = encodeURIComponent(name);
+    var wikiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&origin=*&titles=" + landmarkTitle;
+    $.ajax({
+      url: wikiUrl,
+      dataType: "jsonp",
+      success: function(data) {
+        var pages = data.query.pages;
+        for (var key in pages) {
+            var extract = pages[key].extract
+            var title = pages[key].title
+        }
+        var formattedExtract = "<div id=infoWindow><h4>" + title + "</h4><p><em>from Wikipedia</em></p>" + extract + "</div>"
+        infowindow.setContent(formattedExtract)
+      }
+    });
+  }
 }

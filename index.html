@@ -19,7 +19,7 @@
           <input type="text" class="form-control" placeholder="Search for..."  data-bind='textInput: filterString'>
         </div>
         <ul class="list-group" data-bind="foreach: filteredLandmarks">
-          <li class="list-group-item" data-bind="text: nickname"></li>
+          <li class="list-group-item" data-bind="text: nickname, click: $parent.openInfoWindow"></li>
         </ul>
       </div>
       <div class="col-sm-8">
@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="bower_components/knockout/dist/knockout.debug.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbmP6OcmDdGnY9QVIYfQWWzbwWIowW_E0&callback=initPage" async defer></script>
   <script src="js/map.js"></script>
   <script src="js/view-model.js"></script>

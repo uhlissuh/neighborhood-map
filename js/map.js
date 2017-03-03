@@ -2,7 +2,6 @@ var map;
 var markerList = [];
 
 function initMap() {
-  console.log("init mappppp");
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.8665, lng: -124.0828},
     zoom: 13
@@ -19,29 +18,36 @@ function addMarker(location, name) {
   });
   markerList.push(marker);
 
-  var infowindow = new google.maps.InfoWindow({
-  });
-
+  // var infowindow = new google.maps.InfoWindow({
+  // });
 
   marker.addListener('click', function() {
-    infowindow.open(map, marker);
-    var landmarkTitle = encodeURIComponent(name);
-    var wikiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&origin=*&titles=" + landmarkTitle;
-    $.ajax({
-      url: wikiUrl,
-      dataType: "jsonp",
-      success: function(data) {
-        var pages = data.query.pages;
-        for (var key in pages) {
-            var extract = pages[key].extract
-            var title = pages[key].title
-        }
-        var formattedExtract = "<div id=infoWindow><h4>" + title + "</h4><p><em>from Wikipedia</em></p>" + extract + "</div>"
-        infowindow.setContent(formattedExtract)
+    openInfoWindow(name, marker);
+  })
+}
+
+//opens infowindow and calls wikipedia API
+function openInfoWindow(name, marker) {
+  var infowindow = new google.maps.InfoWindow({
+  });
+  infowindow.open(map, marker);
+  var landmarkTitle = encodeURIComponent(name);
+  var wikiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&origin=*&titles=" + landmarkTitle;
+  $.ajax({
+    url: wikiUrl,
+    dataType: "jsonp",
+    success: function(data) {
+      var pages = data.query.pages;
+      for (var key in pages) {
+          var extract = pages[key].extract
+          var title = pages[key].title
       }
-    });
+      var formattedExtract = "<div id=infoWindow><h4>" + title + "</h4><p><em>from Wikipedia</em></p>" + extract + "</div>"
+      infowindow.setContent(formattedExtract)
+    }
   });
 }
+
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
