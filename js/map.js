@@ -33,6 +33,7 @@ function addMarker(location, name) {
 //opens infowindow and calls wikipedia API
 function openInfoWindow(name, marker) {
   if (infowindow) {
+    infowindow.setContent("")
     infowindow.close();
   }
   infowindow.open(map, marker);
