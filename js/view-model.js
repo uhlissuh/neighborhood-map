@@ -52,7 +52,7 @@ var LocationsListModel = function() {
         marker = markerList[i];
       }
     }
-    
+
     var infowindow = new google.maps.InfoWindow({
     });
 

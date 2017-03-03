@@ -1,10 +1,14 @@
 var map;
 var markerList = [];
+var infoWindow;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.8665, lng: -124.0828},
     zoom: 13
+  });
+
+  infowindow = new google.maps.InfoWindow({
   });
 }
 
@@ -28,8 +32,9 @@ function addMarker(location, name) {
 
 //opens infowindow and calls wikipedia API
 function openInfoWindow(name, marker) {
-  var infowindow = new google.maps.InfoWindow({
-  });
+  if (infowindow) {
+    infowindow.close();
+  }
   infowindow.open(map, marker);
   var landmarkTitle = encodeURIComponent(name);
   var wikiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&origin=*&titles=" + landmarkTitle;
