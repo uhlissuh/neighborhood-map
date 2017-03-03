@@ -18,9 +18,9 @@
           <span class="input-group-addon"><span class=" glyphicon glyphicon-filter"></span></span>
           <input type="text" class="form-control" placeholder="Search for..."  data-bind='textInput: filterString'>
         </div>
-        <ul class="list-group" data-bind="foreach: filteredLandmarks">
-          <li class="list-group-item" data-bind="text: nickname, click: $parent.openInfoWindow"></li>
-        </ul>
+        <div class="list-group" data-bind="foreach: filteredLandmarks">
+          <a href="#" class="list-group-item list-group-item-action" data-bind="text: nickname, click: $parent.openInfoWindow"></a>
+        </div>
       </div>
       <div class="col-sm-8">
         <div id="map">
