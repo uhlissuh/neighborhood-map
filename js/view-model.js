@@ -45,16 +45,24 @@ var LocationsListModel = function() {
     setMapOnAll(map);
   });
 
+  self.toggleBounce = function(marker) {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function(){marker.setAnimation(null); }, 750);
+  }
+
   self.openInfoWindow = function(data) {
+    if (infowindow) {
+      infowindow.setContent("")
+      infowindow.close();
+    }
     var marker;
     for (i = 0; i <markerList.length; i++) {
       if (markerList[i].getPosition().lat() === data.location.lat) {
         marker = markerList[i];
       }
     }
+    self.toggleBounce(marker);
 
-    var infowindow = new google.maps.InfoWindow({
-    });
 
     infowindow.open(map, marker);
     name = data.name;
@@ -73,5 +81,8 @@ var LocationsListModel = function() {
         infowindow.setContent(formattedExtract)
       }
     });
+
+    self.toggleBounce(marker);
+
   }
 }

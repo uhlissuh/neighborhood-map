@@ -36,6 +36,10 @@ function openInfoWindow(name, marker) {
     infowindow.setContent("")
     infowindow.close();
   }
+
+  toggleBounce(marker);
+
+
   infowindow.open(map, marker);
   var landmarkTitle = encodeURIComponent(name);
   var wikiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&origin=*&titles=" + landmarkTitle;
@@ -71,4 +75,9 @@ function clearMarkers() {
 function deleteMarkers() {
   clearMarkers();
   markerList = [];
+}
+
+function toggleBounce(marker) {
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(function(){marker.setAnimation(null); }, 750);
 }
