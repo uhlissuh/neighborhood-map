@@ -49,6 +49,11 @@ var MapModel = function() {
     infowindow.open(map, marker);
     var landmarkTitle = encodeURIComponent(name);
     var wikiUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&origin=*&titles=" + landmarkTitle;
+
+    var wikiTimeout = setTimeout(function() {
+      infowindow.setContent("Oops! Failed to load Wikipedia components")
+    }, 8000);
+
     $.ajax({
       url: wikiUrl,
       dataType: "jsonp",
@@ -60,6 +65,7 @@ var MapModel = function() {
         }
         var formattedExtract = "<div id=infoWindow><h4>" + title + "</h4><p><em>from Wikipedia</em></p>" + extract + "</div>"
         infowindow.setContent(formattedExtract);
+        clearTimeout(wikiTimeout);
       }
     });
   };
