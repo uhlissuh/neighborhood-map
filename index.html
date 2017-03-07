@@ -6,20 +6,24 @@
   <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="navbar navbar-default">
+  <nav class="navbar navbar-default">
     <span class="navbar-brand">Arcata Neighborhood Map</span>
-  </div>
+    <a class="btn pull-right" data-toggle="collapse" data-target="#list"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+  </nav>
   <div class="container">
     <div class="row">
-      <div class="col-sm-4" id="list">
-        <div class="input-group">
-          <span class="input-group-addon"><span class=" glyphicon glyphicon-filter"></span></span>
-          <input type="text" class="form-control" placeholder="Search for..."  data-bind='textInput: filterString'>
-        </div>
-        <div class="list-group" data-bind="foreach: filteredLandmarks">
-          <a href="#" class="list-group-item list-group-item-action" data-bind="text: nickname, click: $parent.openInfoWindow"></a>
+      <div class="col-sm-4">
+        <div class="collapse in" id="list">
+          <div class="input-group">
+            <span class="input-group-addon"><span class=" glyphicon glyphicon-filter"></span></span>
+            <input type="text" class="form-control" placeholder="Search for..."  data-bind='textInput: filterString'>
+          </div>
+          <div class="list-group" data-bind="foreach: filteredLandmarks">
+            <a href="#" class="list-group-item list-group-item-action" data-bind="text: nickname, click: $parent.openInfoWindow"></a>
+          </div>
         </div>
       </div>
       <div class="col-sm-8">
