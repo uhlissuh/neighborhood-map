@@ -6,3 +6,7 @@ This is a single page landmark exploration app for my hometown of Arcata, Ca. It
 1. Download files
 2. Run ```bower install``` to install dependencies
 3. Open index.html in the browser
+
+#View
+This app is running on Github Pages at
+https://uhlissuh.github.io/udacity-p6-neighborhood-map/
