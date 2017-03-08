@@ -13,10 +13,6 @@ var MapModel = function() {
     });
   };
 
-  self.googleError = function() {
-    alert("There was an error loading Google Maps!")
-  };
-
   self.addMarkers = function(landmarks) {
     for (var i = 0; i < landmarks.length; i++) {
       self.addMarker(landmarks[i].location, landmarks[i].name);

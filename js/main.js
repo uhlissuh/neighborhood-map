@@ -36,3 +36,7 @@ function initPage() {
   // put all markers on map initially
   mapModel.addMarkers(listModel.landmarks);
 }
+
+googleError = function() {
+  alert("There was an error loading Google Maps!")
+};
