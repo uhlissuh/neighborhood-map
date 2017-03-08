@@ -4,4 +4,5 @@ This is a single page landmark exploration app for my hometown of Arcata, Ca. It
 
 #Run
 1. Download files
-2. Open index.html in the browser
+2. Run ```bower install``` to install dependencies
+3. Open index.html in the browser

@@ -13,6 +13,10 @@ var MapModel = function() {
     });
   };
 
+  self.googleError = function() {
+    alert("There was an error loading Google Maps!")
+  };
+
   self.addMarkers = function(landmarks) {
     for (var i = 0; i < landmarks.length; i++) {
       self.addMarker(landmarks[i].location, landmarks[i].name);
@@ -58,10 +62,12 @@ var MapModel = function() {
       url: wikiUrl,
       dataType: "jsonp",
       success: function(data) {
+        var extract;
+        var title;
         var pages = data.query.pages;
         for (var key in pages) {
-            var extract = pages[key].extract
-            var title = pages[key].title
+          extract = pages[key].extract
+          title = pages[key].title
         }
         var formattedExtract = "<div id=infoWindow><h4>" + title + "</h4><p><em>from Wikipedia</em></p>" + extract + "</div>"
         infowindow.setContent(formattedExtract);

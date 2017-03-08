@@ -7,38 +7,43 @@
   height: 120px;
 }
 
+@media screen and (max-width: 600px) {
+  #infoWindow {
+    width: 250px;
+    height: 100px;
+  }
+}
+
 
 .btn {
   padding-top: 15px;
 }
 
 /*allows list to overlap map on small phones*/
-@media screen and (max-width: 600px)
-   {
-    .collapsing
-    {
-      position: absolute !important;
-      z-index: 20;
-      width: 300px;
-      top: 0px;
-    }
-      .collapse.in
-    {
-      display: block;
-      position: absolute;
-      z-index: 20;
-      width: 300px;
-      top: 0px;
-    }
-      .navbar-collapse
-    {
-      max-height: none !important;
-    }
-   }
+@media screen and (max-width: 600px) {
+  .collapsing
+  {
+    position: absolute !important;
+    z-index: 20;
+    width: 300px;
+    top: 0px;
+  }
+    .collapse.in
+  {
+    display: block;
+    position: absolute;
+    z-index: 20;
+    width: 300px;
+    top: 0px;
+  }
+    .navbar-collapse
+  {
+    max-height: none !important;
+  }
+}
 
 /*makes the hamburger button disappear for ipad and desktop*/
-@media screen and (min-width: 600px)
-{
+@media screen and (min-width: 600px) {
   .btn {
     display: none;
   }
