@@ -18,7 +18,7 @@
         <div class="collapse in" id="list">
           <div class="input-group">
             <span class="input-group-addon"><span class=" glyphicon glyphicon-filter"></span></span>
-            <input type="text" class="form-control" placeholder="Search for..."  data-bind='textInput: filterString'>
+            <input type="text" class="form-control" placeholder="Filter by..."  data-bind='textInput: filterString'>
           </div>
           <div class="list-group" data-bind="foreach: filteredLandmarks">
             <a href="#" class="list-group-item list-group-item-action" data-bind="text: nickname, click: $parent.openInfoWindow"></a>
